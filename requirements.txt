@@ -1,0 +1,12 @@
+black==21.4b2
+isort==5.10.1
+jupyter==1.0.0
+opencv-contrib-python==3.4.17.63
+pandas==1.4.1
+pytest==7.1.1
+pyyaml==6.0
+scipy==1.8.0
+scikit-learn==1.0.2
+tqdm==4.63.1
+boto3==1.24.7
+protobuf~=3.19.0  

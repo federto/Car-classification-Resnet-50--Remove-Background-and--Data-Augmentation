@@ -1,0 +1,47 @@
+seed: 123
+
+data:
+    directory: "/home/app/src/data/car_ims_v3/train"
+    labels: "inferred"
+    label_mode: "categorical"
+    validation_split: 0.2
+    image_size: [224, 224]
+    batch_size: 32
+
+model:
+    weights: "imagenet"
+    input_shape: [224, 224, 3]
+    classes: 196
+    dropout_rate: 0.8
+    data_aug_layer:
+        random_flip:
+            name : "random_flip"
+            mode: "horizontal"
+        random_rotation:
+            name: "random_rotation"
+            factor: 0.05
+        random_zoom:
+            name : "random_zoom"
+            height_factor: 0.08
+            width_factor: 0.08
+
+compile:
+    optimizer:
+        adam:
+            learning_rate: 0.00001
+
+    loss: "categorical_crossentropy"
+    metrics: ["accuracy"]
+
+fit:
+    epochs: 70
+    callbacks:
+        model_checkpoint:
+            filepath: "/home/app/src/experiments/exp_002/model.{epoch:02d}-{val_loss:.4f}.h5"
+            save_best_only: true
+        tensor_board:
+            log_dir: "/home/app/src/experiments/exp_002/logs"
+
+
+
+
